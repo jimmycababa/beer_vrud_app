@@ -51,6 +51,7 @@ class Api::V1::BeersController < ApplicationController
 
     render json: { notice: 'Beer was successfully removed.' }
   end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_beer
