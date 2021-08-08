@@ -115,7 +115,7 @@ loadBeers = () => {
         <Table className="table-striped-rows" dataSource={this.state.beers} columns={this.columns} pagination={{ pageSize: 5 }} />
     {/* the dataSource attribute receives the list of beers we've mounted from the back-end */}
     {/* the columns attribute receives the metadata we've already built */}
-        {/* <AddBeerModal reloadBeers={this.reloadBeers} /> */}
+        <AddBeerModal reloadBeers={this.reloadBeers} />
       </>
     );
   }

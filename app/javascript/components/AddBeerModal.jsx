@@ -93,3 +93,5 @@ class AddBeerModal extends React.Component {
     );
   }
 }
+
+export default AddBeerModal;
