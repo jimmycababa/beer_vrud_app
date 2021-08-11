@@ -10,3 +10,6 @@ class CreateBeers < ActiveRecord::Migration[6.1]
     end
   end
 end
+
+# create_table specifies how the beers table should be constructed. 
+# t.timestamps method defines two additonal columns named created_at and updated_at
