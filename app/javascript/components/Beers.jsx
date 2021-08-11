@@ -1,10 +1,12 @@
 import { Table, message, Popconfirm } from "antd";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import AddBeerModal from "./AddBeerModal";
 
-class Beers extends React.Component {
-columns = [
-    //   columns is an array that represents the skeleton of the table.
+
+function Beers() {
+  const [beers, setBeers] = useState([])
+  let columns = [
+    //   columns is an array that represents the skeleton of the table. saved as a variable.
     //  the antd table needs to receive the metadata information about your table structure (rows and columns) as an array
     {
       title: "Brand",
@@ -34,7 +36,7 @@ columns = [
       key: "action",
     //   with the action key, we need to specify the link of action to trigger with the user wants to delete an item
       render: (_text, record) => (
-        <Popconfirm title="Are you sure to delete this beer?" onConfirm={() => this.deleteBeer(record.id)} okText="Yes" cancelText="No">
+        <Popconfirm title="Are you sure to delete this beer?" onConfirm={() => deleteBeer(record.id)} okText="Yes" cancelText="No">
           <a href="#" type="danger">
             Delete{" "}
           </a>
@@ -44,16 +46,30 @@ columns = [
       ),
     },
   ];
+  function deleteBeer(id) {
+    const url = `api/v1/beers/${id}`;
+  
+    fetch(url, {
+      method: "delete",
+    })
+      .then((data) => {
+        if (data.ok) {
+           reloadBeers();
+        //   the reloadBeers function will re-fetch all the beers from the back-end once again.
+          return data.json();
+        }
+        throw new Error("Network error.");
+      })
+      .catch((err) => message.error("Error: " + err));
+  };
+  
+  function reloadBeers(){
+    setBeers([])
+    // we are resetting the state's beers array and calling the load function again.
+    loadBeers();
+  };
 
-  state = {
-    beers: [],
-}
-
-componentDidMount(){
-    this.loadBeers()
-}
-
-loadBeers = () => {
+  function loadBeers() {
     const url = "api/v1/beers/index";
     fetch(url) 
     // requesting the /index endpoint asynchronously and then checks if the response status equals OK
@@ -75,50 +91,48 @@ loadBeers = () => {
             country: beer.country,
             quantity: beer.quantity,
           };
-  
-          this.setState((prevState) => ({
-            beers: [...prevState.beers, newEl],
-          }));
+  // this is an implicit return
+          setBeers((prevState) => [...prevState, newEl]);
         });
       })
     //   if anything went wrong during the process, the catch block will capture the exception and alert a message
       .catch((err) => message.error("Error: " + err));
   };
+// callback function that we are passing an empty dependency list. it will run when the component mounts the first time. thats the only time we want it to run
+  useEffect(() => loadBeers(), []) 
 
-  reloadBeers = () => {
-    this.setState({ beers: [] });
-    // we are resetting the state's beers array and calling the load function again.
-    this.loadBeers();
-  };
+  return (
+    <>
+      <Table className="table-striped-rows" dataSource={beers} columns={columns} pagination={{ pageSize: 5 }} />
+  {/* the dataSource attribute receives the list of beers we've mounted from the back-end */}
+  {/* the columns attribute receives the metadata we've already built */}
+      <AddBeerModal reloadBeers={reloadBeers} />
+    </>
+  );
+} 
 
-  deleteBeer = (id) => {
-    const url = `api/v1/beers/${id}`;
+
+
+
+
+//   state = {
+//     beers: [],
+//     prices: {
+//       lager: NaN,
+//     }
+//   }
+// setState({ prices: { lager: 9.5 }})
+
+// if it was a functional component:
+//  const [beers, setBeers] = useState([])
+// const [prices, setPrices] = useState({ lager: NaN })
+// setBeers([value1, value2])
+// setPrices({lager: 9.5, whiskey: 10 })
+
   
-    fetch(url, {
-      method: "delete",
-    })
-      .then((data) => {
-        if (data.ok) {
-          this.reloadBeers();
-        //   the reloadBeers function will re-fetch all the beers from the back-end once again.
-          return data.json();
-        }
-        throw new Error("Network error.");
-      })
-      .catch((err) => message.error("Error: " + err));
-  };
-
-  render() {
     //   this render function will display the two tags we're importing there: the antd's Table component and AddBeerModal
-    return (
-      <>
-        <Table className="table-striped-rows" dataSource={this.state.beers} columns={this.columns} pagination={{ pageSize: 5 }} />
-    {/* the dataSource attribute receives the list of beers we've mounted from the back-end */}
-    {/* the columns attribute receives the metadata we've already built */}
-        <AddBeerModal reloadBeers={this.reloadBeers} />
-      </>
-    );
-  }
-}
+ 
+  
+
 
 export default Beers;
