@@ -100,6 +100,7 @@ function Beers() {
       .catch((err) => message.error("Error: " + err));
   };
 // callback function that we are passing an empty dependency list. it will run when the component mounts the first time. thats the only time we want it to run
+// set the useEffect at the end of the component to avoid any confustion
   useEffect(() => loadBeers(), []) 
 
   return (
