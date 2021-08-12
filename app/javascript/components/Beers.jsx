@@ -71,7 +71,7 @@ function Beers() {
   };
 
   function loadBeers() {
-    const url = "api/v1/beers/index";
+    const url = "api/v1/beers";
     fetch(url) 
     // requesting the /index endpoint asynchronously and then checks if the response status equals OK
       .then((data) => {
