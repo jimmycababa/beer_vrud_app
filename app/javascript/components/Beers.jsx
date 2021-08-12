@@ -2,7 +2,8 @@ import { Table, message, Popconfirm } from "antd";
 import React, { useState, useEffect } from "react";
 import AddBeerModal from "./AddBeerModal";
 
-
+// the function call 'Beers' adds state to the component and renders it initialized with the value of an empty array. 
+// the two values: beers is the variable that is assigned the initial value of state which is the empty array. the variable 'setBeers' is assigned to a function that will be used to modify the state.
 function Beers() {
   const [beers, setBeers] = useState([])
   let columns = [
