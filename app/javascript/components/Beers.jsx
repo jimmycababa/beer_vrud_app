@@ -70,6 +70,7 @@ function Beers() {
     loadBeers();
   };
 
+  // took index out of the url here since we don't need it
   function loadBeers() {
     const url = "api/v1/beers";
     fetch(url) 
