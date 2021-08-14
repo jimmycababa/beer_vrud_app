@@ -28,6 +28,11 @@ function Beers() {
         key: "country",
       },
       {
+        title: "Size",
+        dataIndex: "size",
+        key: "size",
+      },
+      {
         title: "Quantity",
         dataIndex: "quantity",
         key: "quantity",
@@ -35,7 +40,7 @@ function Beers() {
     {
       title: "",
       key: "action",
-    //   with the action key, we need to specify the link of action to trigger with the user wants to delete an item
+    //   with the action key, we need to specify the link of action to trigger when the user wants to delete an item
       render: (_text, record) => (
         <Popconfirm title="Are you sure to delete this beer?" onConfirm={() => deleteBeer(record.id)} okText="Yes" cancelText="No">
           <a href="#" type="danger">
@@ -91,6 +96,7 @@ function Beers() {
             brand: beer.brand,
             style: beer.style,
             country: beer.country,
+            size: beer.size,
             quantity: beer.quantity,
           };
   // this is an implicit return
