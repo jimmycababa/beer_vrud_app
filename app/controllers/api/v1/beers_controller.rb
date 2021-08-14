@@ -5,7 +5,7 @@ class Api::V1::BeersController < ApplicationController
   # GET /beers
   # GET /beers.json
   def index
-    @beers = Beer.all.order(brand: :asc)
+    @beers = Beer.all.sort_by(&:created_at)
     render json: @beers
   end
 

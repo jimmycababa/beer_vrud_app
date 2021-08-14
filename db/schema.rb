@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2021_08_05_201020) do
     t.string "style"
     t.string "country"
     t.integer "quantity"
-    t.datetime "created_at", precision: 6, null: false
+    t.datetime "created_at", precision: 6, null: true
     t.datetime "updated_at", precision: 6, null: false
   end
 
