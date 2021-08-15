@@ -52,6 +52,11 @@ class Api::V1::BeersController < ApplicationController
 
     render json: { notice: 'Beer was successfully removed.' }
   end
+
+  def edit
+    @beer = Beer.find(params[:id])
+    render :edit
+  end
   
   private
     # Use callbacks to share common setup or constraints between actions.
