@@ -58,6 +58,9 @@ class AddBeerModal extends React.Component {
             <Form.Item name="style" label="Style" rules={[{ required: true, message: "Please input your beer style!" }]}>
               <Input placeholder="Input your beer style" />
             </Form.Item>
+            <Form.Item name="size" label="Size" rules={[{ required: true, message: "Please input vessel type and size!" }]}>
+              <Input placeholder="Input vessel type and size!" />
+            </Form.Item>
 
             <Form.Item
               name="country"
@@ -80,7 +83,7 @@ class AddBeerModal extends React.Component {
             </Form.Item>
 
             <Form.Item name="quantity" label="Quantity" rules={[{ required: true, message: "Please input the quantity!" }]}>
-              <Input type="number" placeholder="How many beers you desire?" />
+              <Input type="number" placeholder="How many beers do you desire?" />
             </Form.Item>
             <Form.Item>
               <Button type="primary" htmlType="submit">

@@ -6,6 +6,6 @@ Beer.delete_all
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Beer.create(brand: 'Eagle Park', style: 'IPA', country: 'USA', quantity: 20)
-Beer.create(brand: 'Delerium', style: 'Belgium Pale Ale', country: 'Belgium', quantity: 25)
-Beer.create(brand: 'San Miguel', style: 'Lager', country: 'Philippines', quantity: 100)
+Beer.create(brand: 'Eagle Park', style: 'IPA', country: 'USA', size: '12oz can', quantity: 20)
+Beer.create(brand: 'Delerium', style: 'Belgium Pale Ale', country: 'Belgium', size: '12oz can', quantity: 25)
+Beer.create(brand: 'San Miguel', style: 'Lager', country: 'Philippines', size: '12oz can', quantity: 100)

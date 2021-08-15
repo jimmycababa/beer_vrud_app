@@ -4,6 +4,7 @@ class CreateBeers < ActiveRecord::Migration[6.1]
       t.string :brand
       t.string :style
       t.string :country
+      t.string :size
       t.integer :quantity
 
       t.timestamps

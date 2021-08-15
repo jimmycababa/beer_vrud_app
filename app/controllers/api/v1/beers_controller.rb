@@ -5,7 +5,7 @@ class Api::V1::BeersController < ApplicationController
   # GET /beers
   # GET /beers.json
   def index
-    @beers = Beer.all.order(brand: :asc)
+    @beers = Beer.all.sort_by(&:created_at)
     render json: @beers
   end
 
@@ -61,6 +61,6 @@ class Api::V1::BeersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def beer_params
-      params.permit(:brand, :style, :country, :quantity)
+      params.permit(:brand, :style, :country, :size, :quantity)
     end
 end
