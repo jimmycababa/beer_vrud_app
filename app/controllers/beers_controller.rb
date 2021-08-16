@@ -2,6 +2,12 @@
 class BeersController < ApplicationController
   def index
   end
+
+  def favorites
+  end
+
+def contact
+  end
 end
 
  
