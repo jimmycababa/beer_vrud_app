@@ -2,6 +2,7 @@ import { Layout } from "antd";
 import React from "react";
 import Beers from "./Beers";
 import Header from "./Header";
+import Favorites from "./Favorites";
 
 const { Content, Footer } = Layout;
 
@@ -13,6 +14,7 @@ export default () => (
         <h1>Beer Catalog</h1>
         <Beers />
       </div>
+      <Favorites />
     </Content>
     <Footer style={{ textAlign: "center" }}>Cabababadger ©2021.</Footer>
   </Layout>

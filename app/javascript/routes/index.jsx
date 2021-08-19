@@ -1,13 +1,15 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "../components/Home";
+import Favorites from "../components/Favorites"
 
 const RouterComponent = () => {
   return (
     <Router>
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/favorites" exact component={Favorites} />
+        <Route path="/Favorites" exact component={Favorites} />
+        <Favorites />
       </Switch>
     </Router>
   );
