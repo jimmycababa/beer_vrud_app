@@ -8,7 +8,7 @@ const RouterComponent = () => {
     <Router>
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/Favorites" exact component={Favorites} />
+        <Route path="/favorites" exact component={Favorites} />
         <Favorites />
       </Switch>
     </Router>

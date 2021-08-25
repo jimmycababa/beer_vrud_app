@@ -5,8 +5,8 @@ Rails.application.routes.draw do
     end
   end
   root 'beers#index'
-  get '/favorites', to: 'beers#favorites'
-  get '/contact', to: 'beers#contact'
+  get '/favorites', to: 'favorites#index'
+  get '/contact', to: 'contact#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   end
 
